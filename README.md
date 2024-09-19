@@ -16,7 +16,7 @@ This repository contains a webpage based on the article "Vanta and Compliance: S
 
 ## Live Demo
 
-You can view the live webpage [here](URL_TO_LIVE_WEBPAGE).
+You can view the live webpage [here](https://ETEKTrooper.github.io/Vanta_article_9Brains/).
 
 ## Getting Started
 
@@ -24,4 +24,4 @@ To view the webpage locally:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+   git clone https://github.com/ETEKTrooper/Vanta_article_9Brains.git
