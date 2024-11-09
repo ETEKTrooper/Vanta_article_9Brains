@@ -3,406 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMMC Quiz</title>
+    <title>Surveillance Assessment Report - TechSecure Solutions</title>
     <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            line-height: 1.8;
         }
         .container {
             max-width: 800px;
-            margin: auto;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            font-weight: 600;
+            color: #007acc;
+            margin-bottom: 10px;
         }
         h1 {
+            font-size: 2em;
             text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #007acc;
         }
-        .question {
+        h2 {
+            font-size: 1.5em;
             margin-top: 20px;
+            border-left: 4px solid #007acc;
+            padding-left: 10px;
         }
-        .result {
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 20px;
+        p, ul {
+            margin-bottom: 15px;
         }
-        button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            font-size: 16px;
+        ul {
+            padding-left: 20px;
         }
-
-        /* Modal Styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            border-radius: 8px;
-            z-index: 1000;
+        .section-content {
+            padding: 10px;
+            background-color: #f8f9fb;
+            border-left: 4px solid #007acc;
+            border-radius: 4px;
+            margin-bottom: 20px;
         }
-        .modal.active {
-            display: block;
+        .section-content p, .section-content ul {
+            margin-bottom: 10px;
+            color: #333;
         }
-        .modal button {
-            margin-top: 10px;
-            padding: 5px 10px;
+        .table-container {
+            overflow-x: auto;
+            margin-top: 15px;
         }
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
+        table {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
-            z-index: 999;
+            border-collapse: collapse;
+            background-color: #ffffff;
         }
-        .modal-overlay.active {
-            display: block;
+        th, td {
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            text-align: left;
         }
-        .pass {
-            color: green;
-        }
-        .fail {
-            color: red;
+        th {
+            background-color: #e0f4ff;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>CMMC Quiz</h1>
-        <form id="quizForm">
 
-            <div class="question">
-                <p>1. What does the Defense Industrial Base (DIB) include?</p>
-                <input type="radio" name="q1" value="0"> a) Only large defense contractors<br>
-                <input type="radio" name="q1" value="0"> b) Only government-owned facilities<br>
-                <input type="radio" name="q1" value="1"> c) DoD components and over 100,000 companies and subcontractors<br>
-                <input type="radio" name="q1" value="0"> d) Foreign suppliers only<br>
-            </div>
+<div class="container">
+    <h1>Surveillance Assessment Report: TechSecure Solutions</h1>
+    <p><strong>Date:</strong> November 6, 2024</p>
+    <p><strong>Auditor:</strong> Jane Smith, Lead Auditor</p>
+    <p><strong>Scope:</strong> IT systems, physical security, data access, and user training for ISO 27001 compliance.</p>
 
-            <!-- Continue adding the remaining questions similarly -->
-            <!-- For brevity, I'll add the next three as examples, but you should include all 30 questions like this. -->
-
-            <div class="question">
-                <p>2. Why is the Defense Supply Chain at particular risk from adversaries?</p>
-                <input type="radio" name="q2" value="0"> a) The supply chain is completely secure<br>
-                <input type="radio" name="q2" value="0"> b) It lacks any cybersecurity protocols<br>
-                <input type="radio" name="q2" value="1"> c) Contractors may not have military-grade cybersecurity systems<br>
-                <input type="radio" name="q2" value="0"> d) It only contains non-sensitive information<br>
-            </div>
-
-            <div class="question">
-                <p>3. What is one key reason adversaries target the Defense Supply Chain?</p>
-                <input type="radio" name="q3" value="0"> a) To aid the U.S. military’s technological progress<br>
-                <input type="radio" name="q3" value="1"> b) To minimize U.S. military superiority by stealing technology<br>
-                <input type="radio" name="q3" value="0"> c) To invest in U.S. technology companies<br>
-                <input type="radio" name="q3" value="0"> d) To secure commercial alliances<br>
-            </div>
-
-              <!-- Question 4 -->
-              <div class="question">
-                <p>4. The loss of U.S. Intellectual Property (IP) costs approximately how much annually?</p>
-                <input type="radio" name="q4" value="0"> a) $100 million<br>
-                <input type="radio" name="q4" value="0"> b) $1 billion<br>
-                <input type="radio" name="q4" value="1"> c) $600 billion<br>
-                <input type="radio" name="q4" value="0"> d) $50 billion<br>
-            </div>
-
-            <!-- Question 5 -->
-            <div class="question">
-                <p>5. What philosophy shift does the CMMC introduce to cybersecurity?</p>
-                <input type="radio" name="q5" value="1"> a) From system protection to information protection<br>
-                <input type="radio" name="q5" value="0"> b) From data control to data sharing<br>
-                <input type="radio" name="q5" value="0"> c) From independent verification to self-attestation<br>
-                <input type="radio" name="q5" value="0"> d) From contractor-led to government-led cybersecurity<br>
-            </div>
-
-            <!-- Question 6 -->
-            <div class="question">
-                <p>6. The case study of the Chinese J-31 demonstrated what risk in the Defense Supply Chain?</p>
-                <input type="radio" name="q6" value="0"> a) Overestimating technological advantages<br>
-                <input type="radio" name="q6" value="0"> b) Mismanagement of financial resources<br>
-                <input type="radio" name="q6" value="1"> c) Leakage of sensitive information used to create a prototype<br>
-                <input type="radio" name="q6" value="0"> d) Lack of adequate R&D<br>
-            </div>
-
-            <!-- Question 7 -->
-            <div class="question">
-                <p>7. What is sensitive information as defined in Lesson 2?</p>
-                <input type="radio" name="q7" value="0"> a) Information that is public<br>
-                <input type="radio" name="q7" value="1"> b) Information where loss or misuse could affect national interest<br>
-                <input type="radio" name="q7" value="0"> c) Information only available in classified documents<br>
-                <input type="radio" name="q7" value="0"> d) Data not associated with any contract<br>
-            </div>
-
-            <!-- Question 8 -->
-            <div class="question">
-                <p>8. What type of information includes Federal Contract Information (FCI) and Controlled Unclassified Information (CUI)?</p>
-                <input type="radio" name="q8" value="0"> a) Public data only<br>
-                <input type="radio" name="q8" value="0"> b) Non-sensitive personal information<br>
-                <input type="radio" name="q8" value="1"> c) Data related to contract specifications or performance<br>
-                <input type="radio" name="q8" value="0"> d) Only classified information<br>
-            </div>
-
-            <!-- Question 9 -->
-            <div class="question">
-                <p>9. Which of the following is required to properly manage sensitive information?</p>
-                <input type="radio" name="q9" value="0"> a) Labeling all emails as public<br>
-                <input type="radio" name="q9" value="0"> b) Utilizing “sneakernet” communication methods<br>
-                <input type="radio" name="q9" value="1"> c) Identifying, marking, and safeguarding information<br>
-                <input type="radio" name="q9" value="0"> d) Classifying all documents as CUI<br>
-            </div>
-
-            <!-- Question 10 -->
-            <div class="question">
-                <p>10. What document provides guidelines on the handling of CUI?</p>
-                <input type="radio" name="q10" value="1"> a) DoD Instruction 5200.48<br>
-                <input type="radio" name="q10" value="0"> b) FAR 52.204-21<br>
-                <input type="radio" name="q10" value="0"> c) DFARS 252.204-7019<br>
-                <input type="radio" name="q10" value="0"> d) NIST SP 800-171<br>
-            </div>
-            <!-- Add all remaining questions here, each with value="1" for correct answers and "0" for incorrect -->
-<!-- Question 11 -->
-<div class="question">
-    <p>11. What does multifactor authentication (MFA) help protect?</p>
-    <input type="radio" name="q11" value="0"> a) Public announcements<br>
-    <input type="radio" name="q11" value="0"> b) Private systems without passwords<br>
-    <input type="radio" name="q11" value="1"> c) Sensitive information through added layers of security<br>
-    <input type="radio" name="q11" value="0"> d) Only physical access to buildings<br>
-</div>
-
-<!-- Question 12 -->
-<div class="question">
-    <p>12. Which layer in isolation protects sensitive data within an organization?</p>
-    <input type="radio" name="q12" value="0"> a) Presentation Layer<br>
-    <input type="radio" name="q12" value="0"> b) Physical Layer<br>
-    <input type="radio" name="q12" value="0"> c) Network Layer<br>
-    <input type="radio" name="q12" value="1"> d) Application Layer<br>
-</div>
-
-<!-- Question 13 -->
-<div class="question">
-    <p>13. What kind of information is Controlled Unclassified Information (CUI)?</p>
-    <input type="radio" name="q13" value="0"> a) Public information available on websites<br>
-    <input type="radio" name="q13" value="1"> b) Information needing safeguarding but not classified<br>
-    <input type="radio" name="q13" value="0"> c) Only data without contractual ties<br>
-    <input type="radio" name="q13" value="0"> d) Information that does not affect national security<br>
-</div>
-
-<!-- Question 14 -->
-<div class="question">
-    <p>14. What does logical isolation in network security involve?</p>
-    <input type="radio" name="q14" value="0"> a) Physically disconnecting network devices<br>
-    <input type="radio" name="q14" value="0"> b) Using encryption to secure guest networks<br>
-    <input type="radio" name="q14" value="1"> c) Configuring networks to prevent communications between devices<br>
-    <input type="radio" name="q14" value="0"> d) Requiring keycards for access to buildings<br>
-</div>
-
-<!-- Question 15 -->
-<div class="question">
-    <p>15. The use of encryption helps in which scenario?</p>
-    <input type="radio" name="q15" value="0"> a) When sharing publicly available information<br>
-    <input type="radio" name="q15" value="1"> b) When securing design documents or sensitive communications<br>
-    <input type="radio" name="q15" value="0"> c) When transferring only non-sensitive data<br>
-    <input type="radio" name="q15" value="0"> d) Only in offline document sharing<br>
-</div>
-
-<!-- Question 16 -->
-<div class="question">
-    <p>16. What is the main objective of the CMMC program?</p>
-    <input type="radio" name="q16" value="0"> a) To improve U.S. foreign relations<br>
-    <input type="radio" name="q16" value="1"> b) To assess contractors’ cybersecurity maturity and preparedness<br>
-    <input type="radio" name="q16" value="0"> c) To handle all DoD procurement<br>
-    <input type="radio" name="q16" value="0"> d) To implement marketing strategies<br>
-</div>
-
-<!-- Question 17 -->
-<div class="question">
-    <p>17. How many maturity levels are in the CMMC model?</p>
-    <input type="radio" name="q17" value="0"> a) 1<br>
-    <input type="radio" name="q17" value="0"> b) 2<br>
-    <input type="radio" name="q17" value="0"> c) 3<br>
-    <input type="radio" name="q17" value="1"> d) 5<br>
-</div>
-
-<!-- Question 18 -->
-<div class="question">
-    <p>18. Which of the following is true about prior DIB cybersecurity compliance requirements?</p>
-    <input type="radio" name="q18" value="0"> a) Contractors were fully verified by third parties<br>
-    <input type="radio" name="q18" value="1"> b) Compliance was self-attested without verification<br>
-    <input type="radio" name="q18" value="0"> c) It required physical inspections<br>
-    <input type="radio" name="q18" value="0"> d) Contractors did not handle CUI<br>
-</div>
-
-<!-- Question 19 -->
-<div class="question">
-    <p>19. What does the DoD's Interim Final Rule require for self-assessment?</p>
-    <input type="radio" name="q19" value="0"> a) A mandatory annual on-site review<br>
-    <input type="radio" name="q19" value="1"> b) Submission of a security score to SPRS<br>
-    <input type="radio" name="q19" value="0"> c) Complete non-disclosure to all employees<br>
-    <input type="radio" name="q19" value="0"> d) External audits only<br>
-</div>
-
-<!-- Question 20 -->
-<div class="question">
-    <p>20. Which of the following organizations must submit NIST SP 800-171 assessments?</p>
-    <input type="radio" name="q20" value="0"> a) Commercial-off-the-shelf (COTS) providers<br>
-    <input type="radio" name="q20" value="1"> b) Organizations handling CUI<br>
-    <input type="radio" name="q20" value="0"> c) Foreign contractors only<br>
-    <input type="radio" name="q20" value="0"> d) Contractors with expired certifications<br>
-</div>
-
-<!-- Question 21 -->
-<div class="question">
-    <p>21. How often is a CMMC certification required to be renewed?</p>
-    <input type="radio" name="q21" value="0"> a) Every 10 years<br>
-    <input type="radio" name="q21" value="0"> b) Every year<br>
-    <input type="radio" name="q21" value="1"> c) Every 3 years<br>
-    <input type="radio" name="q21" value="0"> d) Every 5 years<br>
-</div>
-
-<!-- Question 22 -->
-<div class="question">
-    <p>22. Why must contractors submit self-assessment scores to SPRS?</p>
-    <input type="radio" name="q22" value="0"> a) To receive funding<br>
-    <input type="radio" name="q22" value="1"> b) To demonstrate a baseline cybersecurity level<br>
-    <input type="radio" name="q22" value="0"> c) For promotional purposes<br>
-    <input type="radio" name="q22" value="0"> d) For marketing use<br>
-</div>
-
-<!-- Question 23 -->
-<div class="question">
-    <p>23. Which role does a Certified CMMC Professional (CCP) primarily serve?</p>
-    <input type="radio" name="q23" value="0"> a) Marketing specialist<br>
-    <input type="radio" name="q23" value="1"> b) Cybersecurity auditor or consultant<br>
-    <input type="radio" name="q23" value="0"> c) Financial advisor<br>
-    <input type="radio" name="q23" value="0"> d) Communications lead<br>
-</div>
-
-<!-- Question 24 -->
-<div class="question">
-    <p>24. What are the ethical principles outlined in the CMMC Code of Professional Conduct?</p>
-    <input type="radio" name="q24" value="1"> a) Confidentiality, professionalism, objectivity, integrity, and proper use of methods<br>
-    <input type="radio" name="q24" value="0"> b) Public disclosure, confidentiality, subjectivity, and oversight<br>
-    <input type="radio" name="q24" value="0"> c) Objectivity, sales focus, public relations, and independence<br>
-    <input type="radio" name="q24" value="0"> d) Independence, collaboration, and transparency<br>
-</div>
-
-<!-- Question 25 -->
-<div class="question">
-    <p>25. What is the purpose of the CCP Code of Professional Conduct (CoPC)?</p>
-    <input type="radio" name="q25" value="0"> a) To allow contractors to perform third-party assessments<br>
-    <input type="radio" name="q25" value="1"> b) To establish guidelines for ethical behavior and responsibilities<br>
-    <input type="radio" name="q25" value="0"> c) To provide discounts on defense products<br>
-    <input type="radio" name="q25" value="0"> d) To encourage competition between CMMC providers<br>
-</div>
-
-<!-- Question 26 -->
-<div class="question">
-    <p>26. What is one key responsibility of a CCP when consulting?</p>
-    <input type="radio" name="q26" value="0"> a) Increase the company’s sales<br>
-    <input type="radio" name="q26" value="1"> b) Guide the organization in adopting cybersecurity practices<br>
-    <input type="radio" name="q26" value="0"> c) Develop marketing materials<br>
-    <input type="radio" name="q26" value="0"> d) Lead all DoD programs<br>
-</div>
-
-<!-- Question 27 -->
-<div class="question">
-    <p>27. Which responsibility must a CCP avoid due to conflict of interest?</p>
-    <input type="radio" name="q27" value="1"> a) Assessing an organization they previously consulted for<br>
-    <input type="radio" name="q27" value="0"> b) Reviewing evidence only<br>
-    <input type="radio" name="q27" value="0"> c) Reporting cybersecurity breaches to the DoD<br>
-    <input type="radio" name="q27" value="0"> d) Attending team meetings<br>
-</div>
-
-<!-- Question 28 -->
-<div class="question">
-    <p>28. CCPs are prohibited from holding multiple roles in which scenario?</p>
-    <input type="radio" name="q28" value="1"> a) When they are consulting for multiple OSCs<br>
-    <input type="radio" name="q28" value="0"> b) When they provide financial advice to the OSC<br>
-    <input type="radio" name="q28" value="1"> c) When they serve as both a consultant and assessor for the same OSC<br>
-    <input type="radio" name="q28" value="0"> d) When they assist in the development of OSC programs<br>
-</div>
-
-<!-- Question 29 -->
-<div class="question">
-    <p>29. Why is professionalism critical for CCPs?</p>
-    <input type="radio" name="q29" value="0"> a) To market their services to new clients<br>
-    <input type="radio" name="q29" value="1"> b) To establish trust and maintain the integrity of the assessment process<br>
-    <input type="radio" name="q29" value="0"> c) To develop new cybersecurity methods<br>
-    <input type="radio" name="q29" value="0"> d) To allow CCPs to bypass certain regulations<br>
-</div>
-
-<!-- Question 30 -->
-<div class="question">
-    <p>30. What should a CCP do if they identify a potential ethical violation?</p>
-    <input type="radio" name="q30" value="0"> a) Ignore it if it’s minor<br>
-    <input type="radio" name="q30" value="1"> b) Report it immediately to The Cyber AB<br>
-    <input type="radio" name="q30" value="0"> c) Share it with competitors<br>
-    <input type="radio" name="q30" value="0"> d) Resolve it internally without reporting<br>
-</div>
-
-
-           
-            <button type="button" onclick="calculateScore()">Submit Quiz</button>
-        </form>
-
-        <!-- Modal -->
-        <div id="modalOverlay" class="modal-overlay"></div>
-        <div id="resultModal" class="modal">
-            <p id="modalMessage"></p>
-            <button onclick="closeModal()">Close</button>
-        </div>
+    <h2>1. Introduction</h2>
+    <div class="section-content">
+        <p><strong>Purpose of the Report:</strong> This surveillance assessment report aims to verify that TechSecure Solutions continues to meet ISO 27001 standards for information security management.</p>
+        <p><strong>Scope of the Assessment:</strong> The audit focuses on information security policies, access control, incident response, and employee training within TechSecure Solutions' main office and its cloud infrastructure.</p>
     </div>
 
-    <script>
-        function calculateScore() {
-            const form = document.getElementById('quizForm');
-            const formData = new FormData(form);
-            let score = 0;
-            let maxScore = 30; // Each correct answer gives 1 point, 30 questions total
-    
-            formData.forEach(value => {
-                score += parseInt(value);
-            });
-    
-            const percentage = (score / maxScore) * 800; // Scale score to 800 points
-    
-            // Determine message based on score
-            const isPass = percentage >= 500;
-            const message = isPass
-                ? "Amazing work! 🎉 You've PASSED with a score of " + Math.round(percentage) + "/800. Keep up the great progress!"
-                : "You did NOT pass. Your score is " + Math.round(percentage) + "/800. Keep studying and you'll get there!";
-            
-            // Display the message in the modal
-            const modalMessage = document.getElementById("modalMessage");
-            modalMessage.textContent = message;
-    
-            // Apply color based on pass/fail
-            modalMessage.classList.toggle("pass", isPass);
-            modalMessage.classList.toggle("fail", !isPass);
-    
-            openModal();
-        }
-    
-        function openModal() {
-            document.getElementById("resultModal").classList.add("active");
-            document.getElementById("modalOverlay").classList.add("active");
-        }
-    
-        function closeModal() {
-            document.getElementById("resultModal").classList.remove("active");
-            document.getElementById("modalOverlay").classList.remove("active");
-        }
-    </script>
-    
+    <h2>2. Summary of Previous Compliance Status</h2>
+    <div class="section-content">
+        <p>In the previous assessment (March 2024), TechSecure Solutions was found fully compliant with most ISO 27001 controls, with minor issues in user access management and data backup processes. The company implemented corrective actions, including enhanced logging and backup improvements.</p>
+    </div>
+
+    <h2>3. Assessment Methodology</h2>
+    <div class="section-content">
+        <p><strong>Assessment Frequency:</strong> Quarterly surveillance assessment.</p>
+        <p><strong>Approach:</strong> The assessment included document reviews, technical control testing, employee interviews, and a physical security walkthrough.</p>
+        <p><strong>Standards Referenced:</strong> ISO 27001:2013 Information Security Management System.</p>
+    </div>
+
+    <h2>4. Control Review</h2>
+    <div class="section-content">
+        <p><strong>Access Control</strong></p>
+        <p><strong>Objective:</strong> Ensure that only authorized personnel have access to sensitive data and systems.</p>
+        <p><strong>Findings:</strong> Review of access logs and role-based permissions revealed that terminated employees’ access was not always promptly revoked.</p>
+        <p><strong>Compliance Status:</strong> Partially Compliant</p>
+        <p><strong>Evidence:</strong> HR logs showed a delay in deactivating user accounts for three out of 20 terminated employees.</p>
+
+        <p><strong>Risk Assessment and Management</strong></p>
+        <p><strong>Objective:</strong> Continually identify and mitigate security risks.</p>
+        <p><strong>Findings:</strong> The risk register is updated regularly, but new risks associated with remote work have not been assessed since July 2023.</p>
+        <p><strong>Compliance Status:</strong> Non-Compliant</p>
+        <p><strong>Evidence:</strong> Risk assessment documentation lacks updates on remote access vulnerabilities, despite the increase in remote work.</p>
+    </div>
+
+    <h2>5. Observations and Non-Conformities</h2>
+    <div class="section-content">
+        <ul>
+            <li><strong>Access Control Issue:</strong> Delays in revoking access for terminated employees present potential unauthorized access risks.</li>
+            <li><strong>Risk Assessment Gaps:</strong> Lack of updated risk assessment for remote work.</li>
+            <li><strong>Data Encryption Protocols:</strong> Outdated protocols on a legacy server could lead to data vulnerabilities.</li>
+            <li><strong>Incident Response:</strong> Lack of incident response updates post-phishing attack.</li>
+            <li><strong>Training Gaps:</strong> Three employees missed mandatory security training timelines.</li>
+        </ul>
+    </div>
+
+    <h2>6. Recommendations for Improvement</h2>
+    <div class="section-content">
+        <ul>
+            <li>Implement automated deactivation processes to ensure that terminated employees lose access promptly.</li>
+            <li>Review and update the risk register to address new risks associated with remote work.</li>
+            <li>Upgrade legacy server protocols to TLS 1.2 or higher for enhanced data security.</li>
+            <li>Revise the incident response plan based on lessons learned from the recent phishing attack.</li>
+            <li>Establish a tracking system to ensure all employees complete security training within 30 days of hire.</li>
+        </ul>
+    </div>
+
+    <h2>7. Summary of Findings and Overall Compliance Status</h2>
+    <div class="section-content">
+        <p>TechSecure Solutions demonstrates a strong commitment to security, with compliance in many areas. However, several non-conformities and minor issues require attention to ensure continued compliance with ISO 27001 standards. Overall, the organization is <strong>partially compliant</strong> and must address identified issues by the next audit.</p>
+    </div>
+
+    <h2>8. Action Plan</h2>
+    <div class="section-content table-container">
+        <table>
+            <tr>
+                <th>Issue</th>
+                <th>Responsible Party</th>
+                <th>Deadline</th>
+            </tr>
+            <tr>
+                <td>Automated Access Deactivation</td>
+                <td>IT & HR</td>
+                <td>December 2024</td>
+            </tr>
+            <tr>
+                <td>Remote Work Risk Assessment Update</td>
+                <td>Security Team</td>
+                <td>November 2024</td>
+            </tr>
+            <tr>
+                <td>Encryption Protocol Update</td>
+                <td>IT Department</td>
+                <td>December 2024</td>
+            </tr>
+            <tr>
+                <td>Incident Response Update</td>
+                <td>Incident Response Team</td>
+                <td>November 2024</td>
+            </tr>
+            <tr>
+                <td>Training Tracking System</td>
+                <td>HR</td>
+                <td>December 2024</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
 </body>
 </html>
