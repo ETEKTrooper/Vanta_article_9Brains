@@ -3,142 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechDefense Solutions Gap Analysis</title>
+    <title>CMMC Quiz</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
             margin: 20px;
-            color: #333;
         }
-
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
         h1 {
             text-align: center;
-            color: #003366;
         }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .question {
             margin-top: 20px;
-            background-color: #ffffff;
         }
-
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #003366;
-            color: #ffffff;
-            text-align: center;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .header {
-            text-align: center;
-            padding: 10px;
-            background-color: #003366;
-            color: #ffffff;
-        }
-
-        /* Make CMMC Domain titles bold and always visible */
-        .bold {
+        .result {
+            font-size: 24px;
             font-weight: bold;
-            cursor: pointer; /* Shows pointer when hovering over titles */
-            color: #003366;
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
         }
 
-        /* Black out all content except for the CMMC Domain column */
-        .content-row td:not(:first-child) {
-            background-color: #333;
-            color: transparent;
-            transition: color 0.3s, background-color 0.3s;
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            border-radius: 8px;
+            z-index: 1000;
         }
-
-        /* Reveal specific row content on hover */
-        .content-row:hover td:not(:first-child) {
-            color: #333;
-            background-color: #f9f9f9;
+        .modal.active {
+            display: block;
         }
-
-        /* Highlight CMMC Domain title on hover */
-        .bold:hover {
-            color: #003366;
+        .modal button {
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+        .modal-overlay.active {
+            display: block;
+        }
+        .pass {
+            color: green;
+        }
+        .fail {
+            color: red;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>CMMC Quiz</h1>
+        <form id="quizForm">
 
-    <h1>Gap Analysis Table: CMMC Level 3 Compliance for TechDefense Solutions</h1>
+            <div class="question">
+                <p>1. What does the Defense Industrial Base (DIB) include?</p>
+                <input type="radio" name="q1" value="0"> a) Only large defense contractors<br>
+                <input type="radio" name="q1" value="0"> b) Only government-owned facilities<br>
+                <input type="radio" name="q1" value="1"> c) DoD components and over 100,000 companies and subcontractors<br>
+                <input type="radio" name="q1" value="0"> d) Foreign suppliers only<br>
+            </div>
 
-    <table>
-        <tr>
-            <th>CMMC Domain</th>
-            <th>Current Gap</th>
-            <th>Desired State (Goal)</th>
-            <th>Actions to Bridge the Gap</th>
-        </tr>
-        <tr class="content-row">
-            <td class="bold">Access Control (AC)</td>
-            <td>Decentralized access policies with limited MFA, leading to inconsistent security for CUI access.</td>
-            <td>Standardized access control policies across all departments, with MFA and automated tracking for all CUI systems.</td>
-            <td>Implement MFA company-wide, establish role-based access, and use automated tracking to ensure consistent access control.</td>
-        </tr>
-        <tr class="content-row">
-            <td class="bold">Incident Response (IR)</td>
-            <td>No formal, unified incident response plan for CUI, leading to reactive responses across different teams.</td>
-            <td>Documented, proactive incident response plan specific to CUI, with trained personnel and defined response protocols.</td>
-            <td>Develop a CUI-focused incident response plan, conduct regular training and drills, and deploy real-time CUI monitoring.</td>
-        </tr>
-        <tr class="content-row">
-            <td class="bold">Audit and Accountability (AU)</td>
-            <td>Incomplete logging across departments, with no centralized system for tracking access or auditing CUI activity.</td>
-            <td>Centralized logging system with scheduled audits to monitor all CUI access and ensure accountability.</td>
-            <td>Implement a centralized SIEM system, establish audit schedules, and define log retention policies.</td>
-        </tr>
-        <tr class="content-row">
-            <td class="bold">System Protection (SC)</td>
-            <td>Limited network segmentation and varied encryption standards, creating vulnerabilities in CUI data handling.</td>
-            <td>Full network segmentation and end-to-end encryption to protect all CUI data flows across departments.</td>
-            <td>Segment networks handling CUI and apply end-to-end encryption to data flows.</td>
-        </tr>
-        <tr class="content-row">
-            <td class="bold">Personnel Security (PS)</td>
-            <td>Inconsistent background checks and lack of standardized CUI security training for personnel handling sensitive data.</td>
-            <td>Consistent vetting processes and CMMC-specific training for all personnel accessing CUI, with training tracked.</td>
-            <td>Conduct background checks, provide CMMC-specific training, and track completion rates.</td>
-        </tr>
-        <tr class="content-row">
-            <td class="bold">Risk Management (RM)</td>
-            <td>Ad hoc risk assessments without a unified approach, making it hard to identify and mitigate CUI-specific risks.</td>
-            <td>Structured risk assessment framework with a POA&M to systematically address vulnerabilities in CUI protection.</td>
-            <td>Regular risk assessments, focused on CUI, and a formal POA&M to prioritize and address identified risks.</td>
-        </tr>
-        <tr class="content-row">
-            <td class="bold">Maintenance (MA)</td>
-            <td>Untracked and unscheduled maintenance for CUI systems, leaving systems vulnerable.</td>
-            <td>Scheduled, documented maintenance to ensure CUI systems are secure and regularly updated.</td>
-            <td>Create a maintenance schedule for CUI systems, document all updates, and track compliance post-maintenance.</td>
-        </tr>
-        <tr class="content-row">
-            <td class="bold">Configuration Management (CM)</td>
-            <td>No documented configurations or change approval process for CUI systems, risking unauthorized changes.</td>
-            <td>Baseline configurations and a formal change management process to maintain secure system settings.</td>
-            <td>Establish baseline configurations, enforce a change approval process, and automate configuration tracking.</td>
-        </tr>
-        <tr class="content-row">
-            <td class="bold">Physical Security (PE)</td>
-            <td>Inconsistent physical access control and visitor tracking for CUI storage areas, risking unauthorized access.</td>
-            <td>Secure and controlled physical access to CUI storage locations, with regular monitoring and visitor logs.</td>
-            <td>Install keycard access systems, maintain visitor logs, and conduct quarterly physical audits of CUI storage areas.</td>
-        </tr>
-    </table>
+            <!-- Continue adding the remaining questions similarly -->
+            <!-- For brevity, I'll add the next three as examples, but you should include all 30 questions like this. -->
 
+            <div class="question">
+                <p>2. Why is the Defense Supply Chain at particular risk from adversaries?</p>
+                <input type="radio" name="q2" value="0"> a) The supply chain is completely secure<br>
+                <input type="radio" name="q2" value="0"> b) It lacks any cybersecurity protocols<br>
+                <input type="radio" name="q2" value="1"> c) Contractors may not have military-grade cybersecurity systems<br>
+                <input type="radio" name="q2" value="0"> d) It only contains non-sensitive information<br>
+            </div>
+
+            <div class="question">
+                <p>3. What is one key reason adversaries target the Defense Supply Chain?</p>
+                <input type="radio" name="q3" value="0"> a) To aid the U.S. military’s technological progress<br>
+                <input type="radio" name="q3" value="1"> b) To minimize U.S. military superiority by stealing technology<br>
+                <input type="radio" name="q3" value="0"> c) To invest in U.S. technology companies<br>
+                <input type="radio" name="q3" value="0"> d) To secure commercial alliances<br>
+            </div>
+
+              <!-- Question 4 -->
+              <div class="question">
+                <p>4. The loss of U.S. Intellectual Property (IP) costs approximately how much annually?</p>
+                <input type="radio" name="q4" value="0"> a) $100 million<br>
+                <input type="radio" name="q4" value="0"> b) $1 billion<br>
+                <input type="radio" name="q4" value="1"> c) $600 billion<br>
+                <input type="radio" name="q4" value="0"> d) $50 billion<br>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <p>5. What philosophy shift does the CMMC introduce to cybersecurity?</p>
+                <input type="radio" name="q5" value="1"> a) From system protection to information protection<br>
+                <input type="radio" name="q5" value="0"> b) From data control to data sharing<br>
+                <input type="radio" name="q5" value="0"> c) From independent verification to self-attestation<br>
+                <input type="radio" name="q5" value="0"> d) From contractor-led to government-led cybersecurity<br>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <p>6. The case study of the Chinese J-31 demonstrated what risk in the Defense Supply Chain?</p>
+                <input type="radio" name="q6" value="0"> a) Overestimating technological advantages<br>
+                <input type="radio" name="q6" value="0"> b) Mismanagement of financial resources<br>
+                <input type="radio" name="q6" value="1"> c) Leakage of sensitive information used to create a prototype<br>
+                <input type="radio" name="q6" value="0"> d) Lack of adequate R&D<br>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question">
+                <p>7. What is sensitive information as defined in Lesson 2?</p>
+                <input type="radio" name="q7" value="0"> a) Information that is public<br>
+                <input type="radio" name="q7" value="1"> b) Information where loss or misuse could affect national interest<br>
+                <input type="radio" name="q7" value="0"> c) Information only available in classified documents<br>
+                <input type="radio" name="q7" value="0"> d) Data not associated with any contract<br>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question">
+                <p>8. What type of information includes Federal Contract Information (FCI) and Controlled Unclassified Information (CUI)?</p>
+                <input type="radio" name="q8" value="0"> a) Public data only<br>
+                <input type="radio" name="q8" value="0"> b) Non-sensitive personal information<br>
+                <input type="radio" name="q8" value="1"> c) Data related to contract specifications or performance<br>
+                <input type="radio" name="q8" value="0"> d) Only classified information<br>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question">
+                <p>9. Which of the following is required to properly manage sensitive information?</p>
+                <input type="radio" name="q9" value="0"> a) Labeling all emails as public<br>
+                <input type="radio" name="q9" value="0"> b) Utilizing “sneakernet” communication methods<br>
+                <input type="radio" name="q9" value="1"> c) Identifying, marking, and safeguarding information<br>
+                <input type="radio" name="q9" value="0"> d) Classifying all documents as CUI<br>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question">
+                <p>10. What document provides guidelines on the handling of CUI?</p>
+                <input type="radio" name="q10" value="1"> a) DoD Instruction 5200.48<br>
+                <input type="radio" name="q10" value="0"> b) FAR 52.204-21<br>
+                <input type="radio" name="q10" value="0"> c) DFARS 252.204-7019<br>
+                <input type="radio" name="q10" value="0"> d) NIST SP 800-171<br>
+            </div>
+            <!-- Add all remaining questions here, each with value="1" for correct answers and "0" for incorrect -->
+<!-- Question 11 -->
+<div class="question">
+    <p>11. What does multifactor authentication (MFA) help protect?</p>
+    <input type="radio" name="q11" value="0"> a) Public announcements<br>
+    <input type="radio" name="q11" value="0"> b) Private systems without passwords<br>
+    <input type="radio" name="q11" value="1"> c) Sensitive information through added layers of security<br>
+    <input type="radio" name="q11" value="0"> d) Only physical access to buildings<br>
+</div>
+
+<!-- Question 12 -->
+<div class="question">
+    <p>12. Which layer in isolation protects sensitive data within an organization?</p>
+    <input type="radio" name="q12" value="0"> a) Presentation Layer<br>
+    <input type="radio" name="q12" value="0"> b) Physical Layer<br>
+    <input type="radio" name="q12" value="0"> c) Network Layer<br>
+    <input type="radio" name="q12" value="1"> d) Application Layer<br>
+</div>
+
+<!-- Question 13 -->
+<div class="question">
+    <p>13. What kind of information is Controlled Unclassified Information (CUI)?</p>
+    <input type="radio" name="q13" value="0"> a) Public information available on websites<br>
+    <input type="radio" name="q13" value="1"> b) Information needing safeguarding but not classified<br>
+    <input type="radio" name="q13" value="0"> c) Only data without contractual ties<br>
+    <input type="radio" name="q13" value="0"> d) Information that does not affect national security<br>
+</div>
+
+<!-- Question 14 -->
+<div class="question">
+    <p>14. What does logical isolation in network security involve?</p>
+    <input type="radio" name="q14" value="0"> a) Physically disconnecting network devices<br>
+    <input type="radio" name="q14" value="0"> b) Using encryption to secure guest networks<br>
+    <input type="radio" name="q14" value="1"> c) Configuring networks to prevent communications between devices<br>
+    <input type="radio" name="q14" value="0"> d) Requiring keycards for access to buildings<br>
+</div>
+
+<!-- Question 15 -->
+<div class="question">
+    <p>15. The use of encryption helps in which scenario?</p>
+    <input type="radio" name="q15" value="0"> a) When sharing publicly available information<br>
+    <input type="radio" name="q15" value="1"> b) When securing design documents or sensitive communications<br>
+    <input type="radio" name="q15" value="0"> c) When transferring only non-sensitive data<br>
+    <input type="radio" name="q15" value="0"> d) Only in offline document sharing<br>
+</div>
+
+<!-- Question 16 -->
+<div class="question">
+    <p>16. What is the main objective of the CMMC program?</p>
+    <input type="radio" name="q16" value="0"> a) To improve U.S. foreign relations<br>
+    <input type="radio" name="q16" value="1"> b) To assess contractors’ cybersecurity maturity and preparedness<br>
+    <input type="radio" name="q16" value="0"> c) To handle all DoD procurement<br>
+    <input type="radio" name="q16" value="0"> d) To implement marketing strategies<br>
+</div>
+
+<!-- Question 17 -->
+<div class="question">
+    <p>17. How many maturity levels are in the CMMC model?</p>
+    <input type="radio" name="q17" value="0"> a) 1<br>
+    <input type="radio" name="q17" value="0"> b) 2<br>
+    <input type="radio" name="q17" value="0"> c) 3<br>
+    <input type="radio" name="q17" value="1"> d) 5<br>
+</div>
+
+<!-- Question 18 -->
+<div class="question">
+    <p>18. Which of the following is true about prior DIB cybersecurity compliance requirements?</p>
+    <input type="radio" name="q18" value="0"> a) Contractors were fully verified by third parties<br>
+    <input type="radio" name="q18" value="1"> b) Compliance was self-attested without verification<br>
+    <input type="radio" name="q18" value="0"> c) It required physical inspections<br>
+    <input type="radio" name="q18" value="0"> d) Contractors did not handle CUI<br>
+</div>
+
+<!-- Question 19 -->
+<div class="question">
+    <p>19. What does the DoD's Interim Final Rule require for self-assessment?</p>
+    <input type="radio" name="q19" value="0"> a) A mandatory annual on-site review<br>
+    <input type="radio" name="q19" value="1"> b) Submission of a security score to SPRS<br>
+    <input type="radio" name="q19" value="0"> c) Complete non-disclosure to all employees<br>
+    <input type="radio" name="q19" value="0"> d) External audits only<br>
+</div>
+
+<!-- Question 20 -->
+<div class="question">
+    <p>20. Which of the following organizations must submit NIST SP 800-171 assessments?</p>
+    <input type="radio" name="q20" value="0"> a) Commercial-off-the-shelf (COTS) providers<br>
+    <input type="radio" name="q20" value="1"> b) Organizations handling CUI<br>
+    <input type="radio" name="q20" value="0"> c) Foreign contractors only<br>
+    <input type="radio" name="q20" value="0"> d) Contractors with expired certifications<br>
+</div>
+
+<!-- Question 21 -->
+<div class="question">
+    <p>21. How often is a CMMC certification required to be renewed?</p>
+    <input type="radio" name="q21" value="0"> a) Every 10 years<br>
+    <input type="radio" name="q21" value="0"> b) Every year<br>
+    <input type="radio" name="q21" value="1"> c) Every 3 years<br>
+    <input type="radio" name="q21" value="0"> d) Every 5 years<br>
+</div>
+
+<!-- Question 22 -->
+<div class="question">
+    <p>22. Why must contractors submit self-assessment scores to SPRS?</p>
+    <input type="radio" name="q22" value="0"> a) To receive funding<br>
+    <input type="radio" name="q22" value="1"> b) To demonstrate a baseline cybersecurity level<br>
+    <input type="radio" name="q22" value="0"> c) For promotional purposes<br>
+    <input type="radio" name="q22" value="0"> d) For marketing use<br>
+</div>
+
+<!-- Question 23 -->
+<div class="question">
+    <p>23. Which role does a Certified CMMC Professional (CCP) primarily serve?</p>
+    <input type="radio" name="q23" value="0"> a) Marketing specialist<br>
+    <input type="radio" name="q23" value="1"> b) Cybersecurity auditor or consultant<br>
+    <input type="radio" name="q23" value="0"> c) Financial advisor<br>
+    <input type="radio" name="q23" value="0"> d) Communications lead<br>
+</div>
+
+<!-- Question 24 -->
+<div class="question">
+    <p>24. What are the ethical principles outlined in the CMMC Code of Professional Conduct?</p>
+    <input type="radio" name="q24" value="1"> a) Confidentiality, professionalism, objectivity, integrity, and proper use of methods<br>
+    <input type="radio" name="q24" value="0"> b) Public disclosure, confidentiality, subjectivity, and oversight<br>
+    <input type="radio" name="q24" value="0"> c) Objectivity, sales focus, public relations, and independence<br>
+    <input type="radio" name="q24" value="0"> d) Independence, collaboration, and transparency<br>
+</div>
+
+<!-- Question 25 -->
+<div class="question">
+    <p>25. What is the purpose of the CCP Code of Professional Conduct (CoPC)?</p>
+    <input type="radio" name="q25" value="0"> a) To allow contractors to perform third-party assessments<br>
+    <input type="radio" name="q25" value="1"> b) To establish guidelines for ethical behavior and responsibilities<br>
+    <input type="radio" name="q25" value="0"> c) To provide discounts on defense products<br>
+    <input type="radio" name="q25" value="0"> d) To encourage competition between CMMC providers<br>
+</div>
+
+<!-- Question 26 -->
+<div class="question">
+    <p>26. What is one key responsibility of a CCP when consulting?</p>
+    <input type="radio" name="q26" value="0"> a) Increase the company’s sales<br>
+    <input type="radio" name="q26" value="1"> b) Guide the organization in adopting cybersecurity practices<br>
+    <input type="radio" name="q26" value="0"> c) Develop marketing materials<br>
+    <input type="radio" name="q26" value="0"> d) Lead all DoD programs<br>
+</div>
+
+<!-- Question 27 -->
+<div class="question">
+    <p>27. Which responsibility must a CCP avoid due to conflict of interest?</p>
+    <input type="radio" name="q27" value="1"> a) Assessing an organization they previously consulted for<br>
+    <input type="radio" name="q27" value="0"> b) Reviewing evidence only<br>
+    <input type="radio" name="q27" value="0"> c) Reporting cybersecurity breaches to the DoD<br>
+    <input type="radio" name="q27" value="0"> d) Attending team meetings<br>
+</div>
+
+<!-- Question 28 -->
+<div class="question">
+    <p>28. CCPs are prohibited from holding multiple roles in which scenario?</p>
+    <input type="radio" name="q28" value="1"> a) When they are consulting for multiple OSCs<br>
+    <input type="radio" name="q28" value="0"> b) When they provide financial advice to the OSC<br>
+    <input type="radio" name="q28" value="1"> c) When they serve as both a consultant and assessor for the same OSC<br>
+    <input type="radio" name="q28" value="0"> d) When they assist in the development of OSC programs<br>
+</div>
+
+<!-- Question 29 -->
+<div class="question">
+    <p>29. Why is professionalism critical for CCPs?</p>
+    <input type="radio" name="q29" value="0"> a) To market their services to new clients<br>
+    <input type="radio" name="q29" value="1"> b) To establish trust and maintain the integrity of the assessment process<br>
+    <input type="radio" name="q29" value="0"> c) To develop new cybersecurity methods<br>
+    <input type="radio" name="q29" value="0"> d) To allow CCPs to bypass certain regulations<br>
+</div>
+
+<!-- Question 30 -->
+<div class="question">
+    <p>30. What should a CCP do if they identify a potential ethical violation?</p>
+    <input type="radio" name="q30" value="0"> a) Ignore it if it’s minor<br>
+    <input type="radio" name="q30" value="1"> b) Report it immediately to The Cyber AB<br>
+    <input type="radio" name="q30" value="0"> c) Share it with competitors<br>
+    <input type="radio" name="q30" value="0"> d) Resolve it internally without reporting<br>
+</div>
+
+
+           
+            <button type="button" onclick="calculateScore()">Submit Quiz</button>
+        </form>
+
+        <!-- Modal -->
+        <div id="modalOverlay" class="modal-overlay"></div>
+        <div id="resultModal" class="modal">
+            <p id="modalMessage"></p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function calculateScore() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+            let score = 0;
+            let maxScore = 30; // Each correct answer gives 1 point, 30 questions total
+    
+            formData.forEach(value => {
+                score += parseInt(value);
+            });
+    
+            const percentage = (score / maxScore) * 800; // Scale score to 800 points
+    
+            // Determine message based on score
+            const isPass = percentage >= 500;
+            const message = isPass
+                ? "Amazing work! 🎉 You've PASSED with a score of " + Math.round(percentage) + "/800. Keep up the great progress!"
+                : "You did NOT pass. Your score is " + Math.round(percentage) + "/800. Keep studying and you'll get there!";
+            
+            // Display the message in the modal
+            const modalMessage = document.getElementById("modalMessage");
+            modalMessage.textContent = message;
+    
+            // Apply color based on pass/fail
+            modalMessage.classList.toggle("pass", isPass);
+            modalMessage.classList.toggle("fail", !isPass);
+    
+            openModal();
+        }
+    
+        function openModal() {
+            document.getElementById("resultModal").classList.add("active");
+            document.getElementById("modalOverlay").classList.add("active");
+        }
+    
+        function closeModal() {
+            document.getElementById("resultModal").classList.remove("active");
+            document.getElementById("modalOverlay").classList.remove("active");
+        }
+    </script>
+    
 </body>
 </html>
